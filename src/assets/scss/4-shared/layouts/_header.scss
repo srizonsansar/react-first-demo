@@ -1,0 +1,154 @@
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    transition: background-color $time-fast, height $time-fast;
+    @include resp('md'){
+        height: 90px;
+    }
+    @include resp('lg'){
+        height: 100px;
+    }
+    &.sticky{
+        background-color: $color-pink-light;
+        height: 80px;
+    }
+    &__container{
+        @extend %container;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__logo{
+        img{
+            width: 100px;
+            height: auto;
+            @include resp('md'){
+                width: 110px;
+            }
+            @include resp('lg'){
+                width: 120px;
+            }
+        }
+    }
+    &__nav{
+        position: fixed;
+        top: 0;
+        left: -200px;
+        height: 100%;
+        background-color: $color-grey-dark;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 200px;
+        padding: 0 20px;
+        @include resp('md'){
+            position: static;
+            height: auto;
+            background-color: transparent;
+            flex-direction: row;
+        }
+        &__item{
+            color: $color-white;
+            font-weight: $fw-medium;
+            padding: 5px 0;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-size: fz(14);
+            cursor: pointer;
+            transition: color $time-fast;
+            @include resp('md'){
+                margin: 0 35px 0 0;
+                color: $color-grey-dark;
+            }
+            @include resp('lg'){
+                margin-right: 50px;
+            }
+            &:last-child{
+                margin: 0;
+            }
+            &:hover{
+                @include resp('lg'){
+                    color: $color-red;
+                }
+            }
+        }
+        &__close{
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid $color-white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include resp('md'){
+                display: none;
+            }
+            svg{
+                width: 16px;
+                height: 16px;
+                fill: $color-white;
+            }
+        }
+    }
+    &__right{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        @include resp('md'){
+            width: 110px;
+        }
+        @include resp('lg'){
+            width: 120px;
+        }
+        &__btn{
+            background-color: $color-red;
+            color: $color-white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: $fw-sbold;
+            margin-right: 20px;
+            font-size: fz(14);
+            text-transform: uppercase;
+            transition: background-color $time-fast;
+            cursor: pointer;
+            @include resp('md'){
+                margin-right: 0;
+                padding: 10px 20px;
+            }
+            @include resp('lg'){
+                padding: 12px 25px;
+            }
+            &:hover{
+                @include resp('lg'){
+                    background-color: $color-grey-dark;
+                }
+            }
+        }
+        &__lines{
+            @include resp('md'){
+                display: none;
+            }
+            &__line{
+                height: 3px;
+                width: 24px;
+                background-color: $color-black;
+                display: block;
+                border-radius: 3px;
+                &--mid{
+                    margin: 4px 3px;
+                    width: 18px;
+                }
+            }
+        }
+    }
+}

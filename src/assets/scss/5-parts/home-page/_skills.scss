@@ -1,0 +1,128 @@
+.skills{
+    @include resp('lg'){
+        padding-bottom: 40px;
+    }
+    &__container{
+        @extend %container;
+    }
+    &__title{
+        @extend %title-block;
+    }
+    &__list{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        @include resp('md'){
+            max-width: none;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        @include resp('lg'){
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        &__item{
+            &:nth-child(3n+2){
+                @include resp('lg'){
+                    transform: translateY(40px);
+                }
+            }
+            .skillCard{
+                position: relative;
+                color: $color-black2;
+                background-color: $color-pink-light;
+                padding: 0 20px 20px;
+                overflow: hidden;
+                transition: background-color $time-fast, color $time-fast;
+                @include resp('md'){
+                    padding: 0 30px 30px;
+                    height: 100%;
+                }
+                @include resp('lg'){
+                    padding: 0 40px 40px;
+                }
+                &:before{
+                    content: attr(data-num);
+                    position: absolute;
+                    bottom: -30px;
+                    right: -30px;
+                    width: 120px;
+                    height: 120px;
+                    border: 10px solid $color-pink-light2;
+                    color: $color-pink-light2;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: fz(60);
+                    font-weight: $fw-sbold;
+                    transition: border-color $time-fast, color $time-fast;
+                }
+                &__icon{
+                    width: 80px;
+                    height: 80px;
+                    background-color: $color-red;
+                    border-radius: 0 0 5px 5px;
+                    margin-bottom: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: transform $time-slow;
+                    @include resp('md'){
+                        margin-bottom: 25px;
+                    }
+                    @include resp('lg'){
+                        margin-bottom: 30px;
+                    }
+                    svg{
+                        width: 40px;
+                        height: 40px;
+                        fill: $color-white;
+                    }
+                }
+                &__title{
+                    font-size: fz(18);
+                    font-weight: $fw-medium;
+                    padding-bottom: 15px;
+                    @include resp('md'){
+                        font-size: fz(21);
+                        padding-bottom: 18px;
+                    }
+                    @include resp('lg'){
+                        font-size: fz(24);
+                        padding-bottom: 20px;
+                    }
+                }
+                &__text{
+                    position: relative;
+                    line-height: 1.5;
+                    @include resp('lg'){
+                        line-height: 1.6;
+                    }
+                }
+                &:hover{
+                    @include resp('lg'){
+                        background-color: $color-grey-dark;
+                        color: $color-white;
+                    }
+                    &:before{
+                        @include resp('lg'){
+                            border-color: transparentize($color-white, .9);
+                            color: transparentize($color-white, .9);
+                        }
+                    }
+                    .skillCard{
+                        &__icon{
+                            @include resp('lg'){
+                                transform: rotateY(360deg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

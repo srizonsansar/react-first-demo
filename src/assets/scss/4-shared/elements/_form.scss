@@ -1,0 +1,265 @@
+.form {
+    &__block {
+        margin-bottom: 15px;
+        &--moreSpace{
+            margin-bottom: 25px;
+        }
+        // Radio Error
+        .radio-error, .checkbox-error{
+            color: $color-error !important;
+            font-size: fz(12);
+            display: block;
+            padding-top: 10px;
+            font-weight: $fw-medium;
+        }
+    }
+
+    &__label {
+        display: block;
+        font-size: fz(16);
+
+        &--inline {
+            display: inline-block;
+            font-size: fz(16);
+            margin-right: 16px;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        font-size: fz(16);
+        color: $color-black;
+        padding: 12px 20px;
+        background-color: $color-white;
+        border: 1px solid darken($color-pink-light2, 50%);
+        outline: none;
+        border-radius: 5px;
+        -webkit-box-shadow: none;
+        -webkit-appearance: none;
+        box-shadow: none;
+        -moz-appearance: textfield;
+    }
+
+    &__required {
+        text-align: center;
+        font-size: fz(12);
+    }
+
+    &__confirm {
+        display: none;
+        text-align: center;
+        font-size: fz(20);
+        color: $color-black;
+        font-weight: $fw-sbold;
+        border: 2px solid $color-black;
+        padding: 15px;
+        &.visible{
+            display: block;
+        }
+    }
+
+
+    //////////////////////////////////////////// SUBMIT ////////////////////////////////////////////
+
+    &__submit {
+
+        &__button {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            padding: 10px;
+            margin: 25px auto 10px;
+            background-color: $color-red;
+            color: $color-white;
+            font-size: fz(14);
+            text-align: center;
+            text-transform: uppercase;
+            border: none;
+            outline: none;
+            border-radius: 0;
+            cursor: pointer;
+            transition: background-color $time-normal, border $time-normal;
+
+            &:hover {
+                @include resp('lg') {
+                    background-color: lighten($color-black, 20%);
+                }
+            }
+        }
+    }
+
+    //////////////////////////////////////////// RADIO & CHECKBOX ////////////////////////////////////////////
+
+    input {
+        &[type='radio'],
+        &[type='checkbox'] {
+            &:checked,
+            &:not(:checked) {
+                position: absolute;
+                left: -9999px;
+            }
+
+            &:checked + label,
+            &:not(:checked) + label {
+                position: relative;
+                padding: 2px 0 0 25px;
+                margin: 0 16px 0 0;
+                cursor: pointer;
+                font-size: fz(16);
+                display: inline-block;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 2px;
+                    width: 19px;
+                    height: 19px;
+                    border-radius: 999px;
+                    background-color: $color-white;
+                    border: 1px solid darken($color-pink-light2, 50%);
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 6px;
+                    left: 4px;
+                    width: 11px;
+                    height: 11px;
+                    background-color: darken($color-pink-light2, 50%);
+                    border-radius: 999px;
+                    transition: opacity $time-veryfast, transform $time-veryfast;
+                }
+            }
+
+            &:not(:checked) + label {
+                &::after {
+                    opacity: 0;
+                    transform: scale(0);
+                }
+            }
+
+            &:checked + label {
+                &::after {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        }
+
+        &[type='checkbox'] {
+            &:checked + label,
+            &:not(:checked) + label {
+                font-size: fz(12);
+
+                &::before {
+                    top: 0;
+                    border-radius: 0;
+                }
+
+                &::after {
+                    top: 4px;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+
+
+    //////////////////////////////////////////// PLACEHOLDER ////////////////////////////////////////////
+
+    ::-webkit-input-placeholder {
+    color: inherit;
+    }
+
+    ::-moz-placeholder {
+    color: inherit;
+    opacity: 1;
+    }
+
+    :-ms-input-placeholder {
+    color: $color-black;
+    }
+
+
+    //////////////////////////////////////////// ERRORS ////////////////////////////////////////////
+
+    label,
+    p {
+        &[class*='error'] {
+            display: inline-block;
+            color: $color-error;
+            font-size: fz(14);
+            margin-top: 2px;
+        }
+    }
+
+    p {
+        &[class*='error'] {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+
+    input {
+        &[class*='error'] {
+            border: 1px solid $color-error;
+            color: $color-error;
+
+            & + label {
+                color: $color-error !important;
+
+                &::before {
+                    border: 1px solid $color-error !important;
+                }
+            }
+        }
+        & + span.error{
+            color: $color-error !important;
+            font-size: fz(12);
+            display: block;
+            padding-top: 5px;
+            font-weight: $fw-medium;
+        }
+    }
+
+    &.hidden{
+        display: none;
+    }
+
+}
+
+
+// Page Site
+.siteForm{
+    padding-bottom: 60px;
+    @include resp('md'){
+        padding-bottom: 80px;
+    }
+    @include resp('lg'){
+        padding-bottom: 100px;
+    }
+    &__container{
+        @extend %container;
+    }
+    &__inner{
+        background-color: $color-pink-light2;
+        padding: 30px;
+        border-radius: 10px;
+        @include resp('xs'){
+            padding: 40px;
+        }
+        @include resp('sm'){
+            padding: 50px;
+        }
+        @include resp('md'){
+            padding: 80px;
+            border-radius: 20px;
+        }
+        @include resp('lg'){
+            padding: 100px;
+        }
+    }
+}

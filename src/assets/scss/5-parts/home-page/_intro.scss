@@ -1,0 +1,160 @@
+.intro{
+    position: relative;
+    background-color: $color-pink-light;
+    &:before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 33.3333%;
+        width: 33.3333%;
+        height: 100%;
+        background-color: $color-pink-light2;
+    }
+    &__container{
+        @extend %container;
+        position: relative;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 80px;
+        @include resp('md'){
+            padding-top: 90px;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        @include resp('lg'){
+            padding-top: 100px;
+        }
+    }
+    &__textBlock{
+        color: $color-grey-dark;
+        margin-bottom: 30px;
+        @include resp('md'){
+            margin-bottom: 0;
+            padding-right: 50px;
+            width: calc(100% - 500px);
+        }
+        @include resp('lg'){
+            width: calc(100% - 600px);
+        }
+        &__title{
+            font-size: 24px;
+            max-width: 800px;
+            &--name{
+                font-size: fz(40);
+                padding-top: 5px;
+                @include resp('xs'){
+                    font-size: fz(44);
+                }
+                @include resp('sm'){
+                    font-size: fz(56);
+                }
+                @include resp('md'){
+                    font-size: fz(64);
+                }
+                @include resp('lg'){
+                    font-size: fz(100);
+                    line-height: 1.2;
+                }
+                @include resp('xl'){
+                    font-size: fz(120);
+                }
+            }
+        }
+    }
+    &__video{
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        height: 280px;
+        @include resp('sm'){
+            height: 320px;
+        }
+        @include resp('lg'){
+            max-width: 600px;
+            height: 420px;
+        }
+        &:before{
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 220px;
+            height: 180px;
+            background-color: $color-red;
+            border-radius: 20px;
+            display: none;
+            @include resp('lg'){
+                display: block;
+            }
+        }
+        &__inner{
+            position: relative;
+            background-color: $color-white;
+            padding: 10px;
+            box-shadow: 0 0 15px transparentize($color-black, .9);
+        }
+        &__img{
+            @extend %image;
+            position: relative;
+            opacity: 1;
+            transition: opacity $time-fast;
+            &.fadeOut{
+                opacity: 0;
+            }
+        }
+        &__playBtn{
+            position: absolute;
+            top: calc(50% - 40px);
+            left: calc(50% - 40px);
+            width: 80px;
+            height: 80px;
+            background-color: $color-white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color $time-fast;
+            &.hidden{
+                display: none;
+            }
+            svg{
+                width: 40px;
+                height: 40px;
+                fill: $color-red;
+                transition: fill $time-fast;
+            }
+            &:hover{
+                @include resp('lg'){
+                    background-color: $color-red;
+                }
+                svg{
+                    @include resp('lg'){
+                        fill: $color-white;
+                    }
+                }
+            }
+        }
+        &__video{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity $time-fast;
+            &.fadeIn{
+                opacity: 1;
+                pointer-events: all;
+            }
+            iframe{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}

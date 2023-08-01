@@ -1,0 +1,46 @@
+/*
+ * This file defines all the scss variables.
+ */
+
+// Colors:
+$color-white: #ffffff;
+$color-black: #000000;
+$color-error: #ff5050;
+$color-green: #6ab04c;
+
+$color-black2: #222222;
+$color-pink-light: #FEF6F6;
+$color-pink-light2: #FDEBEB;
+$color-red: #F95353;
+$color-grey-dark: #34495e;
+
+// Fonts:
+$font: 'Jost', sans-serif;
+
+// Fonts Weight:
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-sbold: 600;
+$fw-bold: 700;
+$fw-black: 900;
+
+// Breakpoints:
+$breakpoints: (
+  xs: 400px,
+  sm: 500px,
+  md: 850px,
+  lg: 1200px,
+  xl: 1400px
+);
+
+// Value for container.
+$container-small: 960px;
+$container: 1200px;
+$container-large: 1280px;
+
+// Animations:
+$time-veryfast: .25s;
+$time-fast: .5s;
+$time-normal: .75s;
+$time-slow: 1s;

@@ -1,0 +1,26 @@
+// Slider Root
+body{
+    overflow-x: hidden;
+}
+#root{
+    transition: transform $time-fast;
+    &.slide{
+        transform: translateX(200px);
+    }
+}
+
+// Line Breaks
+.break{
+    display: block;
+}
+
+// Bottom Space
+.bottom-space{
+    margin-bottom: 60px;
+    @include resp('md'){
+        margin-bottom: 80px;
+    }
+    @include resp('lg'){
+        margin-bottom: 100px;
+    }
+}
